@@ -22,16 +22,16 @@ app.use(bodyParser.json());
  
  
 //Middleware: Route Handlers
-app.use('/addPlayer',addPlayerRouter);
-app.use('/attendedTech',attendedTechRouter);
-app.use('/deletePlayer',deletePlayerRouter);
-app.use('/fiveGames',fiveGamesRouter);
-app.use('/fullRoster', fullRosterRouter);
-app.use('/getPlayer', getPlayerRouter);
-app.use('/rookies',rookieRouter);
-app.use('/rosterByAge',rosterByAgeRouter);
-app.use('/rosterByAgeDesc',rosterByAgeDescRouter);
-app.use('/updatePlayer',updatePlayerRouter);
+app.use('api/addPlayer',addPlayerRouter);
+app.use('api/attendedTech',attendedTechRouter);
+app.use('api/deletePlayer',deletePlayerRouter);
+app.use('api/fiveGames',fiveGamesRouter);
+app.use('api/fullRoster', fullRosterRouter);
+app.use('api/getPlayer', getPlayerRouter);
+app.use('api/rookies',rookieRouter);
+app.use('api/rosterByAge',rosterByAgeRouter);
+app.use('api/rosterByAgeDesc',rosterByAgeDescRouter);
+app.use('api/updatePlayer',updatePlayerRouter);
 
 // Auth would be good to do in the future. 
 //app.use(auth);
