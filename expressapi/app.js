@@ -3,11 +3,11 @@ const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 require('dotenv').config();
-
 //Middleware 
 app.use(bodyParser.json());
 
-
+const MONGODB_URI = 'mongodb://localhost:27017/seahawks';
+const HTTP_PORT = 3000;
  
  const addPlayerRouter        = require('./routes/addPlayer');
  const attendedTechRouter     = require('./routes/attendedTech');
@@ -22,16 +22,16 @@ app.use(bodyParser.json());
  
  
 //Middleware: Route Handlers
-app.use('api/addPlayer',addPlayerRouter);
-app.use('api/attendedTech',attendedTechRouter);
-app.use('api/deletePlayer',deletePlayerRouter);
-app.use('api/fiveGames',fiveGamesRouter);
-app.use('api/fullRoster', fullRosterRouter);
-app.use('api/getPlayer', getPlayerRouter);
-app.use('api/rookies',rookieRouter);
-app.use('api/rosterByAge',rosterByAgeRouter);
-app.use('api/rosterByAgeDesc',rosterByAgeDescRouter);
-app.use('api/updatePlayer',updatePlayerRouter);
+app.use('/api/addPlayer',addPlayerRouter);
+app.use('/api/attendedTech',attendedTechRouter);
+app.use('/api/deletePlayer',deletePlayerRouter);
+app.use('/api/fiveGames',fiveGamesRouter);
+app.use('/api/fullRoster', fullRosterRouter);
+app.use('/api/getPlayer', getPlayerRouter);
+app.use('/api/rookies',rookieRouter);
+app.use('/api/rosterByAge',rosterByAgeRouter);
+app.use('/api/rosterByAgeDesc',rosterByAgeDescRouter);
+app.use('/api/updatePlayer',updatePlayerRouter);
 
 // Auth would be good to do in the future. 
 //app.use(auth);
@@ -40,7 +40,7 @@ app.use('api/updatePlayer',updatePlayerRouter);
 
 //Connect to MongoDB
 
-mongoose.connect(process.env.MONGODB_URI, {
+mongoose.connect(MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }, () => {
@@ -48,7 +48,14 @@ mongoose.connect(process.env.MONGODB_URI, {
 });
 
 // Uncomment to debug.
-//mongoose.set('debug', true);
+mongoose.set('debug', true);
 
 // listen on port defined in by HTTP_PORT in .env
-app.listen(process.env.HTTP_PORT);
+
+
+let server = app.listen(HTTP_PORT, () => {
+    console.log('Express is listening on port: ', server.address().port)
+  })
+
+app.use('/', fullRosterRouter);
+app.use('/fifer/ok', fullRosterRouter);

@@ -20,3 +20,10 @@ export class University {
     Univ: string
   ){}
 }
+
+export class PlayedAndStarted {
+  constructor(
+  GamesPlayed: Number,
+  GamesStarted: Number
+  ){};
+};
