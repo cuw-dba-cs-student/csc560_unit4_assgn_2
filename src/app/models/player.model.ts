@@ -25,5 +25,5 @@ export class PlayedAndStarted {
   constructor(
   GamesPlayed: Number,
   GamesStarted: Number
-  ){};
-};
+  ){}
+}

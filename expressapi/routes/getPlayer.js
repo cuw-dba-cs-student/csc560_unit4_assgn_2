@@ -2,9 +2,9 @@ const express = require('express');
 const Player = require('../models/Player');
 const router = express.Router();
 
-router.get('/:name', async (req,res) => {    
+router.get('/:no/:name', async (req,res) => {    
     try {
-        const player = await Player.find({ Name: req.params.name });
+        const player = await Player.find({ $and: [{Name: req.params.name},{No: req.params.no}]});
         res.json(player);
     }catch{
         res.json({message:err});

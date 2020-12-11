@@ -60,8 +60,8 @@ export class SeahawksRosterService {
     }
 
     //app.use('/api/getPlayer', getPlayerRouter);
-    GetPlayer(name: string): Observable<any>  {
-      let URI = `${this.REST_API}/api/getPlayer/${name}`;
+    GetPlayer(no: number, name: string): Observable<any>  {
+      let URI = `${this.REST_API}/api/getPlayer/${no}/${name}`;
       return this.httpClient.get(URI).pipe(catchError(this.handleError));
     }
 
