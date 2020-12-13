@@ -1,23 +1,23 @@
 export class Player {
   constructor(
-    _Id: String,
-    No: Number,
-    Name: String,
-    Age: Number,
-    Pos: String,
-    GamesPlayed: Number,
-    GamesStarted: Number,
-    Wt: Number ,
-    College: University ,
-    BirthDate: String,
-    YrsInNFL: String, 
-    Salary: String
+    _Id?: String,
+    No?: Number,
+    Name?: String,
+    Age?: Number,
+    Pos?: String,
+    GamesPlayed?: Number,
+    GamesStarted?: Number,
+    Wt?: String ,
+    College?: College ,
+    BirthDate?: String,
+    YrsInNFL?: String, 
+    Salary?: String
   ){}
 }
 
-export class University {
+export class College {
   constructor(
-    Univ: string
+    Univ: String
   ){}
 }
 

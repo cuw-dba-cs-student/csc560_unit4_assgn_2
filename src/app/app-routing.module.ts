@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 
 
 const routes: Routes = [
-  //{ path: '', redirectTo: 'tutorials', pathMatch: 'full' },
+  //{ path: '', component: AppComponent},
   { path: 'roster', component: RosterComponent },
   { path: 'player/:no/:name', component: PlayerDetailsComponent },
   { path: 'addPlayer', component: AddPlayerComponent }

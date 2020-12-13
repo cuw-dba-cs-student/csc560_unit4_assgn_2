@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { Player } from 'src/app/models/player.model';
+import { Router } from '@angular/router';
 import { SeahawksRosterService } from 'src/app/services/seahawksroster.service';
+import { FormGroup, FormBuilder } from "@angular/forms";
 
 @Component({
   selector: 'app-add-player',
@@ -9,9 +11,40 @@ import { SeahawksRosterService } from 'src/app/services/seahawksroster.service';
 })
 export class AddPlayerComponent implements OnInit {
 
-  constructor() { }
+  playerForm: FormGroup;
+
+  constructor(
+    public formBuilder: FormBuilder,
+    private router: Router,
+    private ngZone: NgZone,
+    private seahawksRosterService: SeahawksRosterService
+  ) {
+    this.playerForm = this.formBuilder.group({
+      noNo: [''],
+      name: [''],
+      age: [''],
+      pos: [''],
+      gamesplayed: [''],
+      gamesstarted: [''],
+      wt: [''] ,
+      college: [''] ,
+      birthdate: [''],
+      yrsinnfl: [''], 
+      salary: ['']
+    })
+   }
 
   ngOnInit(): void {
+  }
+
+  onSubmit(): any {
+    this.seahawksRosterService.AddPlayer(this.playerForm.value)
+    .subscribe(() => {
+        console.log('Player added successfully!')
+        this.ngZone.run(() => this.router.navigateByUrl('/roster'))
+      }, (err) => {
+        console.log(err);
+    });
   }
 
 }
