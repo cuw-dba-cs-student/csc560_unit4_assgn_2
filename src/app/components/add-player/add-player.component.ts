@@ -20,14 +20,16 @@ export class AddPlayerComponent implements OnInit {
     private seahawksRosterService: SeahawksRosterService
   ) {
     this.playerForm = this.formBuilder.group({
-      noNo: [''],
+      no: [''],
       name: [''],
       age: [''],
       pos: [''],
       gamesplayed: [''],
       gamesstarted: [''],
       wt: [''] ,
-      college: [''] ,
+      university: this.formBuilder.group({
+        college: ['']
+      }) ,
       birthdate: [''],
       yrsinnfl: [''], 
       salary: ['']
@@ -38,13 +40,15 @@ export class AddPlayerComponent implements OnInit {
   }
 
   onSubmit(): any {
+    console.log(this.playerForm.value);
+    /*
     this.seahawksRosterService.AddPlayer(this.playerForm.value)
     .subscribe(() => {
         console.log('Player added successfully!')
         this.ngZone.run(() => this.router.navigateByUrl('/roster'))
       }, (err) => {
         console.log(err);
-    });
+    }); */
   }
 
 }
