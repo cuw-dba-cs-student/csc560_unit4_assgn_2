@@ -20,7 +20,6 @@ export class SeahawksRosterService {
 
   constructor(private httpClient: HttpClient) { }
 
-    //app.use('/api/addPlayer',addPlayerRouter);
     AddPlayer(payload: Player): Observable<any> {
       let URI = `${this.REST_API}/addPlayer`;      
       return this.httpClient.post(URI, payload)
@@ -29,7 +28,6 @@ export class SeahawksRosterService {
         );
     }
 
-    //app.use('/api/attendedTech',attendedTechRouter);
     AttendedTech(): Observable<any> {
       let URI = `${this.REST_API}/attendedTech`;
       return this.httpClient.get(URI)
@@ -38,13 +36,11 @@ export class SeahawksRosterService {
         );
     }
 
-    //app.use('/api/deletePlayer',deletePlayerRouter);
     DeletePlayer(no: number, name: string): Observable<any> {
       let URI = `${this.REST_API}/deletePlayer/${no}/${name}`;
       return this.httpClient.delete(URI);
     }
 
-    //app.use('/api/fiveGames',fiveGamesRouter);
     FiveGames(): Observable<any> {
       let URI = `${this.REST_API}/fiveGames`;
       return this.httpClient.get(URI)
@@ -53,39 +49,33 @@ export class SeahawksRosterService {
         );
     }
 
-    //app.use('/api/fullRoster', fullRosterRouter);
     FullRoster(): Observable<any> {
-      let URI = `${this.REST_API}/api/fullRoster`;
+      let URI = `${this.REST_API}/fullRoster`;
       return this.httpClient.get(URI).pipe(catchError(this.handleError));
     }
 
-    //app.use('/api/getPlayer', getPlayerRouter);
     GetPlayer(no: number, name: string): Observable<any>  {
-      let URI = `${this.REST_API}/api/getPlayer/${no}/${name}`;
+      let URI = `${this.REST_API}/getPlayer/${no}/${name}`;
       return this.httpClient.get(URI).pipe(catchError(this.handleError));
     }
-
-    //app.use('/api/rookies',rookieRouter);
+    
     Rookies(): Observable<any> {
-      let URI = `${this.REST_API}/api/rookies`;
+      let URI = `${this.REST_API}/rookies`;
       return this.httpClient.get(URI).pipe(catchError(this.handleError));
     }
-    
-    //app.use('/api/rosterByAge',rosterByAgeRouter);
+        
     RosterByAge(): Observable<any> {
-      let URI = `${this.REST_API}/api/rosterByAge`;
+      let URI = `${this.REST_API}/rosterByAge`;
       return this.httpClient.get(URI).pipe(catchError(this.handleError));
     }
     
-    //app.use('/api/rosterByAgeDesc',rosterByAgeDescRouter);
     RosterByAgeDesc(): Observable<any> {
-      let URI = `${this.REST_API}/api/rosterByAgeDesc`;
+      let URI = `${this.REST_API}/rosterByAgeDesc`;
       return this.httpClient.get(URI).pipe(catchError(this.handleError));
     }    
     
-    //app.use('/api/updatePlayer',updatePlayerRouter);
     UpdatePlayer(no: number, name: string, payload: PlayedAndStarted): Observable<any> {
-      let URI = `${this.REST_API}/api/updatePlayer/${no}/${name}`;
+      let URI = `${this.REST_API}/updatePlayer/${no}/${name}`;
       return this.httpClient.patch(URI,payload).pipe(catchError(this.handleError)); 
     }
   

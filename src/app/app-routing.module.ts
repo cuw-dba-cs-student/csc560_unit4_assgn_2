@@ -3,14 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { AddPlayerComponent } from './components/add-player/add-player.component';
 import { RosterComponent} from './components/roster/roster.component';
 import { PlayerDetailsComponent } from './components/player-details/player-details.component';
-import { AppComponent } from './app.component';
 
 
 const routes: Routes = [
-  //{ path: '', component: AppComponent},
+  { path: '', component: RosterComponent},
   { path: 'roster', component: RosterComponent },
-  { path: 'player/:no/:name', component: PlayerDetailsComponent },
-  { path: 'addPlayer', component: AddPlayerComponent }
+  { path: 'addPlayer', component: PlayerDetailsComponent },
+  { path: 'getPlayer/:no/:name', component: PlayerDetailsComponent }
 ];
 
 @NgModule({

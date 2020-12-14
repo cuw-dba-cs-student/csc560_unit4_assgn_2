@@ -2,9 +2,20 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cors = require('cors');
+
+app.use(cors());
+
 require('dotenv').config();
 //Middleware 
 app.use(bodyParser.json());
+
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
+
 
 const MONGODB_URI = 'mongodb://localhost:27017/seahawks';
 const HTTP_PORT = 3000;
@@ -57,5 +68,3 @@ let server = app.listen(HTTP_PORT, () => {
     console.log('Express is listening on port: ', server.address().port)
   })
 
-app.use('/', fullRosterRouter);
-app.use('/fifer/ok', fullRosterRouter);

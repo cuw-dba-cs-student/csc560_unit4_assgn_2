@@ -12,12 +12,8 @@ import { OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   title = 'csc560unit4assgn4dot2';
-  roster:any = [];
-  constructor(private apiService: SeahawksRosterService) { }
-	ngOnInit() {
-		this.apiService.FiveGames().subscribe((data: any[])=>{  
-			console.log(data);  
-			this.roster = data;  
-		})  
+  
+  constructor() { }
+	ngOnInit() {}  
 	}
-}
+

@@ -1,7 +1,6 @@
 const express = require('express');
 const Player = require('../models/Player');
 const router = express.Router();
-const player = require('../models/Player');
 
 router.post('/', (req,res) => {    
     const player = new Player({
