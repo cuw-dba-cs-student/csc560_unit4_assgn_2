@@ -50,7 +50,7 @@ export class PlayerDetailsComponent implements OnInit {
 
     if (this.activatedRoute.snapshot.url[0].path == 'getPlayer') {
 
-      this.mode = 'Update';
+      this.mode = 'UPDATE';
       
       this.playerNo = this.activatedRoute.snapshot.paramMap.get('no');
       
@@ -63,7 +63,7 @@ export class PlayerDetailsComponent implements OnInit {
       this.seahawksRosterService.GetPlayer(this.playerNo,this.playerName).subscribe(res => {
                         
       console.log('Response from GetPlayer');
-      
+      // Set form vals 
       this.playerForm.patchValue({
         no: res[0]['No'],
         name: res[0]['Name'],
@@ -76,8 +76,8 @@ export class PlayerDetailsComponent implements OnInit {
         yrsinnfl: res[0]['Yrs in NFL'], 
         salary: res[0]['Salary']
       });
-            
-            this.playerForm.get('university.college')?.setValue(res[0]['College']['Univ']);
+      // Set nested form vals     
+      this.playerForm.get('university.college')?.setValue(res[0]['College']['Univ']);
 
             this.university.patchValue({
               college: res[0]['College']['Univ']
@@ -87,6 +87,9 @@ export class PlayerDetailsComponent implements OnInit {
     } 
 
     if (this.activatedRoute.snapshot.url[0].path == 'addPlayer') {
+      
+      this.mode = 'INSERT';
+
       this.playerForm = this.formBuilder.group({
         no: [''],
         name: [''],
@@ -103,18 +106,7 @@ export class PlayerDetailsComponent implements OnInit {
         salary: ['']
       })      
     }
-
-    
-
- 
-    
-
-
-
-    
-
-
-  }
+  } // End Constructor
 
   ngOnInit(): void {}
 
