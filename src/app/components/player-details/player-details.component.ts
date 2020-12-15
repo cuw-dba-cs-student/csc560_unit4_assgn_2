@@ -52,38 +52,31 @@ export class PlayerDetailsComponent implements OnInit {
 
       this.mode = 'UPDATE';
       
-      this.playerNo = this.activatedRoute.snapshot.paramMap.get('no');
-      
+      this.playerNo = this.activatedRoute.snapshot.paramMap.get('no');      
       this.playerName = this.activatedRoute.snapshot.paramMap.get('name');
       
-      console.log(this.playerNo);
-      
+      console.log(this.playerNo);      
       console.log(this.playerName);
       
-      this.seahawksRosterService.GetPlayer(this.playerNo,this.playerName).subscribe(res => {
-                        
-      console.log('Response from GetPlayer');
-      // Set form vals 
-      this.playerForm.patchValue({
-        no: res[0]['No'],
-        name: res[0]['Name'],
-        age: res[0]['Age'],
-        pos: res[0]['Pos'],
-        gamesplayed: res[0]['Games Played'],
-        gamesstarted: res[0]['Games Started'],
-        wt: res[0]['Wt'] ,                                                 
-        birthdate: res[0]['BirthDate'],
-        yrsinnfl: res[0]['Yrs in NFL'], 
-        salary: res[0]['Salary']
+      this.seahawksRosterService.GetPlayer(this.playerNo,this.playerName).subscribe(res => {                        
+        console.log('Response from GetPlayer ENDPOINT:');
+        console.log(res);
+        // Set form vals 
+        this.playerForm.patchValue({
+          no: res[0]['No'],
+          name: res[0]['Name'],
+          age: res[0]['Age'],
+          pos: res[0]['Pos'],
+          gamesplayed: res[0]['Games Played'],
+          gamesstarted: res[0]['Games Started'],
+          wt: res[0]['Wt'] ,                                                 
+          birthdate: res[0]['BirthDate'],
+          yrsinnfl: res[0]['Yrs in NFL'], 
+          salary: res[0]['Salary']
+        });
+        // Set nested form vals     
+        this.playerForm.get('university.college')?.setValue(res[0]['College']['Univ']);
       });
-      // Set nested form vals     
-      this.playerForm.get('university.college')?.setValue(res[0]['College']['Univ']);
-
-            this.university.patchValue({
-              college: res[0]['College']['Univ']
-            });
-            
-          });
     } 
 
     if (this.activatedRoute.snapshot.url[0].path == 'addPlayer') {
