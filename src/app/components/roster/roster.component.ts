@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { SeahawksRosterService } from '../../services/seahawksroster.service';
+import { Component, OnInit, NgZone  } from '@angular/core';
+import { SeahawksRosterService} from '../../services/seahawksroster.service';
+import { Router, ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-roster',
@@ -10,13 +12,23 @@ export class RosterComponent implements OnInit {
 
   Roster:any = [];
 
-  constructor(private seahawksRosterService: SeahawksRosterService) { }
-
-  ngOnInit(): void {
+  constructor(
+    private seahawksRosterService: SeahawksRosterService,
+    private router: Router,
+    private ngZone: NgZone,
+    private activatedRoute: ActivatedRoute
+  ) { 
     this.seahawksRosterService.FullRoster().subscribe(
       res => {        
         this.Roster = res;
-    });   
+    }); 
+  }
+
+  ngOnInit(): void {
+//    this.seahawksRosterService.FullRoster().subscribe(
+//      res => {        
+//        this.Roster = res;
+//    });   
   }
 
   deletePlayer(no:any, name:any, i:any) {

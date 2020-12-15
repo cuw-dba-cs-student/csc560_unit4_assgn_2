@@ -21,6 +21,8 @@ export class SeahawksRosterService {
   constructor(private httpClient: HttpClient) { }
 
     AddPlayer(payload: Player): Observable<any> {
+      console.log('Adding Player');
+      console.log(payload);
       let URI = `${this.REST_API}/addPlayer`;      
       return this.httpClient.post(URI, payload)
         .pipe(

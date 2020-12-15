@@ -4,45 +4,45 @@
     <form *ngIf="mode === 'INSERT'" [formGroup]="playerForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label>Number</label>
-        <input class="form-control" type="text" formControlName="no" required>
+        <input class="form-control" type="text" formControlName="No" required>
       </div>
       <div class="form-group">
         <label>Name</label>
-        <input class="form-control" type="text" formControlName="name" required>
+        <input class="form-control" type="text" formControlName="Name" required>
       </div>
       <div class="form-group">
         <label>Age</label>
-        <input class="form-control" type="text" formControlName="age" required>
+        <input class="form-control" type="text" formControlName="Age" required>
       </div>
       <div class="form-group">
         <label>Position</label>
-        <input class="form-control" type="text" formControlName="pos" required>
+        <input class="form-control" type="text" formControlName="Pos" required>
       </div>
       <div class="input-group">
         <span><label>Games Played</label></span>
-        <input class="form-control" type="text" formControlName="gamesplayed" required>
+        <input class="form-control" type="text" formControlName="GamesPlayed" required>
         <label>Games Started</label>
-        <input class="form-control" type="text" formControlName="gamesstarted" required>
+        <input class="form-control" type="text" formControlName="GamesStarted" required>
       </div>
       <div class="form-group">
         <label>Weight</label>
-        <input class="form-control" type="text" formControlName="wt" required>
+        <input class="form-control" type="text" formControlName="Wt" required>
       </div>
-      <div class="form-group" formGroupName="university">
+      <div class="form-group" formGroupName="College">
         <label>College</label>
-        <input class="form-control" type="text" formControlName="college" required>
+        <input class="form-control" type="text" formControlName="Univ" required>
       </div>
       <div class="form-group">
         <label>Birthday</label>
-        <input class="form-control" type="text" formControlName="birthdate" required>
+        <input class="form-control" type="text" formControlName="BirthDate" required>
       </div>
       <div class="form-group">
         <label>Years in the NFL</label>
-        <input class="form-control" type="text" formControlName="yrsinnfl" required>
+        <input class="form-control" type="text" formControlName="YrsinNFL" required>
       </div>
       <div class="form-group">
         <label>Salary</label>
-        <input class="form-control" type="text" formControlName="salary" required>
+        <input class="form-control" type="text" formControlName="Salary" required>
       </div>
       <div class="form-group">
         <button class="btn btn-primary btn-block" type="submit">Add Player to Roster</button>
@@ -52,45 +52,45 @@
     <form *ngIf="mode === 'UPDATE'" [formGroup]="playerForm" (ngSubmit)="onUpdate()">
       <div class="form-group">
         <label>Number</label>
-        <input class="form-control" type="text" formControlName="no" required readonly>
+        <input class="form-control" type="text" formControlName="No" required readonly>
       </div>
       <div class="form-group">
         <label>Name</label>
-        <input class="form-control" type="text" formControlName="name" required readonly>
+        <input class="form-control" type="text" formControlName="Name" required readonly>
       </div>
       <div class="form-group">
         <label>Age</label>
-        <input class="form-control" type="text" formControlName="age" required readonly>
+        <input class="form-control" type="text" formControlName="Age" required readonly>
       </div>
       <div class="form-group">
         <label>Position</label>
-        <input class="form-control" type="text" formControlName="pos" required readonly>
+        <input class="form-control" type="text" formControlName="Pos" required readonly>
       </div>
       <div class="input-group">
         <span><label>Games Played</label></span>
-        <input class="form-control" type="text" formControlName="gamesplayed" required>
+        <input class="form-control" type="text" formControlName="GamesPlayed" required>
         <label>Games Started</label>
-        <input class="form-control" type="text" formControlName="gamesstarted" required>
+        <input class="form-control" type="text" formControlName="GamesStarted" required>
       </div>
       <div class="form-group">
         <label>Weight</label>
-        <input class="form-control" type="text" formControlName="wt" required readonly>
+        <input class="form-control" type="text" formControlName="Wt" required readonly>
       </div>
-      <div class="form-group" formGroupName="university">
+      <div class="form-group" formGroupName="College">
         <label>College</label>
-        <input class="form-control" type="text" formControlName="college" required readonly>
+        <input class="form-control" type="text" formControlName="Univ" required readonly>
       </div>
       <div class="form-group">
         <label>Birthday</label>
-        <input class="form-control" type="text" formControlName="birthdate" required readonly>
+        <input class="form-control" type="text" formControlName="BirthDate" required readonly>
       </div>
       <div class="form-group">
         <label>Years in the NFL</label>
-        <input class="form-control" type="text" formControlName="yrsinnfl" required readonly>
+        <input class="form-control" type="text" formControlName="YrsinNFL" required readonly>
       </div>
       <div class="form-group">
         <label>Salary</label>
-        <input class="form-control" type="text" formControlName="salary" required readonly>
+        <input class="form-control" type="text" formControlName="Salary" required readonly>
       </div>
       <div class="form-group">
         <button class="btn btn-primary btn-block" type="submit">Update Player</button>

@@ -26,23 +26,23 @@ export class PlayerDetailsComponent implements OnInit {
   ) { 
     
     this.playerForm = this.formBuilder.group({
-      no: [''],
-      name: [''],
-      age: [''],
-      pos: [''],
-      gamesplayed: [''],
-      gamesstarted: [''],
-      wt: [''] ,
-      university: this.formBuilder.group({
-        college: ['']
+      No: [''],
+      Name: [''],
+      Age: [''],
+      Pos: [''],
+      GamesPlayed: [''],
+      GamesStarted: [''],
+      Wt: [''] ,
+      College: this.formBuilder.group({
+        Univ: ['']
       }) ,
-      birthdate: [''],
-      yrsinnfl: [''], 
-      salary: ['']
+      BirthDate: [''],
+      YrsinNFL: [''], 
+      Salary: ['']
     })
 
     this.university = this.formBuilder.group({
-      college:['']
+      College:['']
     })
 
     console.log(this.activatedRoute.snapshot);
@@ -61,21 +61,22 @@ export class PlayerDetailsComponent implements OnInit {
       this.seahawksRosterService.GetPlayer(this.playerNo,this.playerName).subscribe(res => {                        
         console.log('Response from GetPlayer ENDPOINT:');
         console.log(res);
+        console.log(this.playerForm);
         // Set form vals 
         this.playerForm.patchValue({
-          no: res[0]['No'],
-          name: res[0]['Name'],
-          age: res[0]['Age'],
-          pos: res[0]['Pos'],
-          gamesplayed: res[0]['Games Played'],
-          gamesstarted: res[0]['Games Started'],
-          wt: res[0]['Wt'] ,                                                 
-          birthdate: res[0]['BirthDate'],
-          yrsinnfl: res[0]['Yrs in NFL'], 
-          salary: res[0]['Salary']
+          No: res[0]['No'],
+          Name: res[0]['Name'],
+          Age: res[0]['Age'],
+          Pos: res[0]['Pos'],
+          GamesPlayed: res[0]['Games Played'],
+          GamesStarted: res[0]['Games Started'],
+          Wt: res[0]['Wt'] ,                                                 
+          BirthDate: res[0]['BirthDate'],
+          YrsinNFL: res[0]['Yrs in NFL'], 
+          Salary: res[0]['Salary']
         });
         // Set nested form vals     
-        this.playerForm.get('university.college')?.setValue(res[0]['College']['Univ']);
+        this.playerForm.get('College.Univ')?.setValue(res[0]['College']['Univ']);
       });
     } 
 
@@ -84,19 +85,19 @@ export class PlayerDetailsComponent implements OnInit {
       this.mode = 'INSERT';
 
       this.playerForm = this.formBuilder.group({
-        no: [''],
-        name: [''],
-        age: [''],
-        pos: [''],
-        gamesplayed: [''],
-        gamesstarted: [''],
-        wt: [''] ,
-        university: this.formBuilder.group({
-          college: ['']
+        No: [''],
+        Name: [''],
+        Age: [''],
+        Pos: [''],
+        GamesPlayed: [''],
+        GamesStarted: [''],
+        Wt: [''] ,
+        College: this.formBuilder.group({
+          Univ: ['']
         }) ,
-        birthdate: [''],
-        yrsinnfl: [''], 
-        salary: ['']
+        BirthDate: [''],
+        YrsinNFL: [''], 
+        Salary: ['']
       })      
     }
   } // End Constructor
@@ -104,19 +105,27 @@ export class PlayerDetailsComponent implements OnInit {
   ngOnInit(): void {}
 
   onUpdate() {
-    null;
+    console.log('onUpdate()');
+    console.log(this.playerForm.value);
+    this.seahawksRosterService.UpdatePlayer(  this.playerForm.get('No')?.value, encodeURIComponent (this.playerForm.get('Name')?.value), this.playerForm.value ) 
+      .subscribe(()=> {
+        console.log('Player updated successfully!')
+        this.ngZone.run(() => this.router.navigateByUrl('/roster'))
+      }, (err) => {
+        console.log(err);
+      });   
   }
 
   onSubmit(): any {
     console.log(this.playerForm.value);
-    /*
+    
     this.seahawksRosterService.AddPlayer(this.playerForm.value)
     .subscribe(() => {
         console.log('Player added successfully!')
         this.ngZone.run(() => this.router.navigateByUrl('/roster'))
       }, (err) => {
         console.log(err);
-    }); */
+    }); 
   }
 
 }
