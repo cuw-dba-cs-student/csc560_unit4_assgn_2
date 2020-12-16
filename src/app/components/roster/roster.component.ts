@@ -14,22 +14,35 @@ export class RosterComponent implements OnInit {
 
   constructor(
     private seahawksRosterService: SeahawksRosterService,
-    private router: Router,
-    private ngZone: NgZone,
     private activatedRoute: ActivatedRoute
   ) { 
-    this.seahawksRosterService.FullRoster().subscribe(
-      res => {        
-        this.Roster = res;
-    }); 
+    
+    if (activatedRoute.snapshot.url[0].path == 'rosterByAge') {      
+      this.seahawksRosterService.RosterByAgeDesc().subscribe(
+        res => {
+          this.Roster = res;
+        });
+    } else if (activatedRoute.snapshot.url[0].path == 'rosterRookies') {
+      this.seahawksRosterService.Rookies().subscribe(
+        res => {
+          this.Roster = res;
+        });
+    } else if (activatedRoute.snapshot.url[0].path == 'rosterFiveGames') {
+      this.seahawksRosterService.FiveGames().subscribe(
+        res => {
+          this.Roster = res;
+        });
+    } else {      
+      this.seahawksRosterService.FullRoster().subscribe(
+        res => {        
+          this.Roster = res;
+      }); 
+    }
+
+
   }
 
-  ngOnInit(): void {
-//    this.seahawksRosterService.FullRoster().subscribe(
-//      res => {        
-//        this.Roster = res;
-//    });   
-  }
+  ngOnInit(): void {}
 
   deletePlayer(no:any, name:any, i:any) {
     console.log(no + " " + name);

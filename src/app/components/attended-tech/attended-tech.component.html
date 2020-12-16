@@ -1,0 +1,35 @@
+<div class="container-fluid">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-0 border-bottom">
+      <h2 class="h2">Seahawks Roster</h2>
+    </div>
+  
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th class="text-center" scope="col">Action</th>            
+            <th scope="col">Name</th>
+            <th scope="col">Number</th>
+            <th scope="col">Age</th>
+            <th scope="col">Position</th>
+            <th scope="col">Games Played</th>
+            <th scope="col">College</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let player of Roster; let i = index">
+            <td class="text-center">
+              <button class="btn btn-sm btn-primary" routerLink="/getPlayer/{{player.No}}/{{player.Name | urlEncodePipe}}">Edit</button>                                 
+              <button class="btn btn-sm btn-danger" (click)="deletePlayer(player.No,player.Name, i)">Delete</button>
+            </td>
+            <td>{{player.Name}}</td>
+            <td>{{player.No}}</td>
+            <td>{{player.Age}}</td>
+            <td>{{player.Pos}}</td>
+            <td>{{player[ 'Games Played' ]}}</td>
+            <td>{{player.College.Univ}}</td>            
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

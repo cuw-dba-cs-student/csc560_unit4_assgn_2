@@ -1,0 +1,24 @@
+<div class="container-fluid">
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-0 border-bottom">
+    <h2 class="h2">Seahawks Roster</h2>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Age</th>
+          <th scope="col">Games Played</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let player of Roster; let i = index">
+          <td>{{player.Name}}</td>
+          <td>{{player.Age}}</td>
+          <td>{{player[ 'Games Played' ]}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

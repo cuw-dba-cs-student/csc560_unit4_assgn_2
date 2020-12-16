@@ -8,6 +8,8 @@ import { RosterComponent } from './components/roster/roster.component';
 import { PlayerDetailsComponent } from './components/player-details/player-details.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UrlEncodePipePipe } from './pipes/url-encode-pipe.pipe';
+import { ExperiencedPlayersComponent } from './components/experienced-players/experienced-players.component';
+import { AttendedTechComponent } from './components/attended-tech/attended-tech.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { UrlEncodePipePipe } from './pipes/url-encode-pipe.pipe';
     AddPlayerComponent,
     RosterComponent,
     PlayerDetailsComponent,
-    UrlEncodePipePipe    
+    UrlEncodePipePipe,
+    ExperiencedPlayersComponent,
+    AttendedTechComponent    
   ],
   imports: [
     BrowserModule,
